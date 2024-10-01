@@ -1,0 +1,13 @@
+{
+    "manifest_version": 3,
+    "version": "1.0",
+    "name": "3D Prints Tracker",
+    "action": {
+        "default_popup": "index.html",
+        "default_icon": "3d-printer.png"
+    },
+    "permissions": [
+        "activeTab",
+        "storage"
+    ]
+}
