@@ -99,10 +99,6 @@ label {
     padding: 5px 10px;
 }
 
-#prints-el a:visited {
-    color: blue;
-}
-
 .delete-item {
     border: none;
     background: transparent;
