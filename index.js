@@ -10,6 +10,8 @@ if (localStoragePrintsList) {
     printsList = localStoragePrintsList
     console.log(printsList)
     render(printsList)
+} else {
+    printsEL.innerHTML = "Add something..."
 }
 
 saveBtn.addEventListener("click", function() {
