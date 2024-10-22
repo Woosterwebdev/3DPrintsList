@@ -6,6 +6,7 @@ const printsEL = document.getElementById("prints-el")
 const localStoragePrintsList = JSON.parse( localStorage.getItem("printsList") )
 let printsList = []
 
+/* Checks is list exists in local storage */
 if (localStoragePrintsList) {
     printsList = localStoragePrintsList
     console.log(printsList)
@@ -14,6 +15,7 @@ if (localStoragePrintsList) {
     printsEL.innerHTML = "Add something..."
 }
 
+/* Saves page to local storage if a title is provided */
 saveBtn.addEventListener("click", function() {
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
         if(textEl.value){
@@ -27,14 +29,14 @@ saveBtn.addEventListener("click", function() {
     })
 })
 
+/* Removes printsList from loacl storage on double click of dealete all */
 deleteAllBtn.addEventListener("dblclick", function() {
     localStorage.clear()
     printsList = []
     render(printsList)
 })
 
-
-
+/* Renders printsList and delete button for each item */
 function render(printsList) {
     let prints = ""
     printsList.forEach(print => {
@@ -61,14 +63,14 @@ function render(printsList) {
     })
 }
 
-console.log(document.querySelectorAll(".delete-item"))
-
+/* Deletes item when its delete button is single clicked */
 function deleteItem(id) {
     printsList = printsList.filter(print => print.id !== id)
     localStorage.setItem("printsList", JSON.stringify(printsList))
     render(printsList)
 }
 
+/* Generates unique id */
 function uuidv4() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
         var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8)
